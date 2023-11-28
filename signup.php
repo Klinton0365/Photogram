@@ -5,7 +5,9 @@
 <?php load_template('_head'); ?>
 
 <body>
-  <?php load_template('_header'); ?>
+
+  <?php
+  load_template('_header'); ?>
   <main>
     <?php load_template('_signup'); ?>
   </main>

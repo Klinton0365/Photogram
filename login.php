@@ -2,63 +2,35 @@
 <?php
 load_template('_head');
 ?>
-<!-- <style>
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-
-  .form-signin {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
-  }
-
-  .form-signin .checkbox {
-    font-weight: 400;
-  }
-
-  /* .form-signin .form-floating (focus-within) {
-  z-index: 2;
-   } */
-
-  .form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-</style> -->
 
 <body>
   <?php load_template('_header'); ?>
 
   <main>
-    <?php
-    //load_template('_calltoaction');
-    ?>
-
     <?php load_template('_login'); ?>
-    <?php
-    //load_template('_photogram');
-    ?>
   </main>
 
   <?php load_template('_footer'); ?>
-
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script src="/Photogram/assets/dist/js/bootstrap.bundle.min.js"></script>
   <!-- <link href="/Photogram/assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <script>
+    // Initialize the agent at application startup.
+    const fpPromise = import('https://openfpcdn.io/fingerprintjs/v4')
+      .then(FingerprintJS => FingerprintJS.load())
+
+    // Get the visitor identifier when you need it.
+    fpPromise
+      .then(fp => fp.get())
+      .then(result => {
+        // This is the visitor identifier:
+        const visitorId = result.visitorId
+        console.log(visitorId)
+        //alert(visitorId)
+        $("#fingerprint").val(visitorId);
+      })
+  </script>
 </body>
 
 </html>
